@@ -1,6 +1,6 @@
 # Hangman Project Expanded
 
-Using the simple CLI hangman created using a tutorial from Real Python[https://realpython.com/python-hangman/#prerequisites] to expand into
+Using the simple CLI hangman created using a tutorial from [Real Python](https://realpython.com/python-hangman/#prerequisites) to expand into
 a web app using React on the frontend and Flask on the back
 
 ## Setting up Flask Server
