@@ -17,4 +17,10 @@ flask run
 
 Flask runs app on port 5000 by default
 
+### Running test
+
+```
+pytest -s tests/
+```
+
 
