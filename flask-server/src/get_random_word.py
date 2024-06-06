@@ -1,7 +1,7 @@
 import json
 import urllib.request
 
-def get_random_word(length):
+def get_random_word(length: int) -> list | None:
     url = f'https://random-word-api.herokuapp.com/word?length={length}'
 
     try:
