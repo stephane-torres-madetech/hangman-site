@@ -20,7 +20,6 @@ function UsersGuess(){
         <div className="guess">
             <input type="text" maxLength={1} onSubmit={() => submitGuess()} onChange={(e) => {
                 setGuess((guess) => e.target.value)
-                console.log(guess);
             }}
             onKeyDown={(e) => {
                 if (e.key === "Enter"){

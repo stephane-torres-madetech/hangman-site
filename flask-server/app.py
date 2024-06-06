@@ -1,10 +1,11 @@
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
-import json
+from src.validate_input import validate_input
 
 app = Flask(__name__)
 CORS(app)
 
+already_guessed = []
 
 @app.route("/")
 def home():
@@ -14,7 +15,9 @@ def home():
 def post():
     bytestring_guess = request.get_data()
     guess = bytestring_guess.decode('UTF-8')
-    print(f'{guess}')
+    print(guess)
+    response = validate_input(guess, already_guessed)
+    already_guessed.append(guess)
    
 
-    return f'Recieved Guess {guess}'
+    return f'{response}'
