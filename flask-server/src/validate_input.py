@@ -1,2 +1,2 @@
 def validate_input(input):
-    return False
+    return type(input) == str
