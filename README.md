@@ -24,3 +24,13 @@ pytest -s tests/
 ```
 
 
+## Setting up and Running Frontend 
+
+```
+cd front-end
+npm install
+npm run dev
+```
+
+vite runs app on port 5173 by default
+
