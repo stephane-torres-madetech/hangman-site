@@ -9,7 +9,7 @@ function App() {
   const [guess, setGuess] = useState("");
   const [alreadyGuessed, setAlreadyGuessed] = useState([]);
 
-  function hasAlreadyGuessed(guess, alreadyGuessed) {
+  function hasBeenGuessed(guess, alreadyGuessed) {
     if(alreadyGuessed.length > 0){
       return alreadyGuessed.some((element) => element == guess);
     }
@@ -17,7 +17,7 @@ function App() {
   }
 
   async function submitGuess() {
-    if (hasAlreadyGuessed(guess, alreadyGuessed)) {
+    if (hasBeenGuessed(guess, alreadyGuessed)) {
       alert("You've already guessed that letter, please guess another");
       setGuess('')
     } else {
