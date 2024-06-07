@@ -6,6 +6,7 @@ app = Flask(__name__)
 CORS(app)
 
 already_guessed = []
+number_of_wrong_guesses_made = 0
 
 @app.route("/")
 # game init here?
@@ -22,4 +23,4 @@ def post():
     already_guessed.append(guess)
    
     if response:
-        return {"guess": guess, "already_guessed": already_guessed}
+        return {"guess": guess, "already_guessed": already_guessed, "number_of_gueseses": number_of_wrong_guesses_made}
