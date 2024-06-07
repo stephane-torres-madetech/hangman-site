@@ -9,6 +9,7 @@ function App() {
   const [guess, setGuess] = useState("");
   const [alreadyGuessed, setAlreadyGuessed] = useState([]);
   const [wrongGuesses, setWrongGuesses] = useState(0)
+
   function hasBeenGuessed(guess, alreadyGuessed) {
     if(alreadyGuessed.length > 0){
       return alreadyGuessed.some((element) => element == guess);
@@ -20,7 +21,9 @@ function App() {
     if (hasBeenGuessed(guess, alreadyGuessed)) {
       alert("You've already guessed that letter, please guess another");
       setGuess('')
-    } else {
+    } else if(guess == ''){
+      alert("You have\'t picked a letter, please pick one")
+    } else{
       await axios
         .post("http://localhost:5000", guess)
         .then((response) => {
@@ -39,6 +42,7 @@ function App() {
   function handleInputChange(e) {
     setGuess(e.target.value);
   }
+
   return (
     <div className="w-full">
       <UsersGuess
