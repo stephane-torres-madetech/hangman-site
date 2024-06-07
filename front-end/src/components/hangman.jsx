@@ -1,4 +1,6 @@
-function Hangman() {
+function Hangman({wrongGuesses}) {
+
+  // use a useEffect to re-render when wrongGuesses changes and to fire a funtion that changes opacticity of different hangman elements?
   return (
     <div className="w-144 relative">
       <div className="">

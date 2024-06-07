@@ -8,7 +8,7 @@ import axios from "axios";
 function App() {
   const [guess, setGuess] = useState("");
   const [alreadyGuessed, setAlreadyGuessed] = useState([]);
-
+  const [wrongGuesses, setWrongGuesses] = useState(0)
   function hasBeenGuessed(guess, alreadyGuessed) {
     if(alreadyGuessed.length > 0){
       return alreadyGuessed.some((element) => element == guess);
@@ -26,6 +26,7 @@ function App() {
         .then((response) => {
           console.log(response.data);
           setAlreadyGuessed(response.data.already_guessed);
+          setWrongGuesses(response.data.number_of_wrong_guesses)
         })
         .catch((error) => {
           console.log(error);
@@ -45,7 +46,7 @@ function App() {
         guess={guess}
         submitGuess={submitGuess}
       />
-      <Hangman />
+      <Hangman wrongGuesses={wrongGuesses}/>
     </div>
   );
 }
