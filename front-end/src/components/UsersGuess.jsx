@@ -13,18 +13,17 @@ function UsersGuess() {
       .catch((error) => {
         console.log(error);
       });
+    setGuess((guess) => "");
   }
 
   return (
     <div className="guess">
-      <form action="POST">
+      <form action="" method="POST">
         <input
           type="text"
           maxLength={1}
           onSubmit={() => submitGuess()}
-          onChange={(e) => {
-            setGuess((guess) => e.target.value);
-          }}
+          onChange={e => setGuess(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               e.preventDefault();
@@ -32,6 +31,7 @@ function UsersGuess() {
             }
           }}
           name="guess"
+          value={guess}
         />
         <input
           type="submit"
