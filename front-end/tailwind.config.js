@@ -10,6 +10,10 @@ export default {
       width: {
         '128': '32rem',
         '144': '34rem',
+      },
+      spacing: {
+        '15': '3.75rem',
+        '37': '9.25rem'
       }
     },
   },
