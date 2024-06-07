@@ -1,40 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import UsersGuess from './components/UsersGuess'
-import Hangman from './components/hangman'
-import axios from 'axios'
-
+import { useState } from "react";
+import "./App.css";
+import UsersGuess from "./components/UsersGuess";
+import Hangman from "./components/hangman";
+import axios from "axios";
 
 // server running on local host 5000
 function App() {
   const [guess, setGuess] = useState("");
+  const [alreadyGuessed, setAlreadyGuessed] = useState([]);
 
-  async function submitGuess() {
-    await axios
-      .post("http://localhost:5000", guess)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    setGuess((guess) => "");
+  function hasAlreadyGuessed(guess, alreadyGuessed) {
+    if(alreadyGuessed.length > 0){
+      return alreadyGuessed.some((element) => element == guess);
+    }
+    
   }
 
-  function handleInputChange(e){
-    setGuess(e.target.value)
+  async function submitGuess() {
+    if (hasAlreadyGuessed(guess, alreadyGuessed)) {
+      alert("You've already guessed that letter, please guess another");
+      setGuess('')
+    } else {
+      await axios
+        .post("http://localhost:5000", guess)
+        .then((response) => {
+          console.log(response.data);
+          setAlreadyGuessed(response.data.already_guessed);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
+      setGuess((guess) => "");
+    }
+  }
+
+  function handleInputChange(e) {
+    setGuess(e.target.value);
   }
   return (
     <div className="w-full">
-     
-       <UsersGuess handleInputChange={handleInputChange} guess={guess} submitGuess={submitGuess}/>      
-      <Hangman/>
+      <UsersGuess
+        handleInputChange={handleInputChange}
+        guess={guess}
+        submitGuess={submitGuess}
+      />
+      <Hangman />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

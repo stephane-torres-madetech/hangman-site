@@ -8,7 +8,7 @@ function Hangman() {
         <div className="w-96 bg-black ">Base</div>
       </div>
       <div className="hangman absolute right-28 top-28 translate-y-16 translate-x-3" >
-        <div className="rounded-full bg-black w-24 h-24">.</div>
+        <div className="rounded-full bg-black w-24 h-24 opacity-0">.</div>
         <div className="w-2 h-36 bg-black relative rotate-[24deg] -top-2 left-4"></div>
         <div className="w-2 h-36 bg-black relative -rotate-[24deg] -top-38 left-18"></div>
         <div className="w-2 h-36 bg-black translate-x-11 relative -top-72" >/</div>
