@@ -19,5 +19,5 @@ def post():
     response = validate_input(guess, already_guessed)
     already_guessed.append(guess)
    
-
-    return f'{response}'
+    if response:
+        return {"guess": guess, "already_guessed": already_guessed}
