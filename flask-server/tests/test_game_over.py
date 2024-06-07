@@ -5,3 +5,6 @@ def test_game_over_too_many_guesses():
 
 def test_game_not_over_fewer_than_max_guesses():
     assert game_over(5) == False
+
+# def test_game_over_guessed_the_correct_word():
+#     assert game_over(5, ['w', 'o', 'r', 'd']) == True
